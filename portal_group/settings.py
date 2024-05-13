@@ -37,7 +37,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'auth_sys'
+    'auth_sys',
+    "forum",
+    "gradesheet"
 ]
 
 MIDDLEWARE = [
@@ -126,3 +128,11 @@ STATICFILES_DIRS = [
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+AUTH_USER_MODEL = "auth_sys.MyUser"
+
+MEDIA_ROOT = BASE_DIR / 'media'
+MEDIA_URL = '/media/'
+
+LOGIN_URL = "login"
+LOGIN_REDIRECT_URL = "/"
+LOGOUT_REDIRECT_URL = "login"
