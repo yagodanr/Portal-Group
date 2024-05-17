@@ -3,7 +3,7 @@
 
 <h2>{{ project.name }}</h2>
 {% for author in project.authors.all %}
-<p>{{ author.username }}</p>
+<a href="{% url 'detail-portfolio' author.id %}">{{ author.username }}</a>
 {% endfor %}
 <p>{{ project.description }}</p>
 <a href="{{ project.link }}">github</a>
