@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% for image in user.portfolio.first.gallery.all  %}
+    <img src="{{ image.image.url }}" alt="Зоображення">
+{% endfor %}
+<a href="{% url 'detail-portfolio' user.id %}">Back</a>
+
+{% endblock %}
