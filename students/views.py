@@ -1,6 +1,6 @@
 from django.shortcuts import render
 from django.contrib.auth.models import User
-from django.views.generic import DetailView
+from django.views.generic import DetailView, ListView
 from .models import Project
 
 # Create your views here.
@@ -8,13 +8,19 @@ from .models import Project
 
 class UserDetailView(DetailView):
     model = User
-    template_name = 'students/portfolio.html'
+    template_name = 'users/portfolio.html'
     context_object_name = 'user'
+
+
+class UserListView(ListView):
+    model = User
+    template_name = 'users/users-list.html'
+    context_object_name = 'users'
 
 
 class ProjectDetailView(DetailView):
     model = Project
-    template_name = 'students/project.html'
+    template_name = 'users/project.html'
     context_object_name = 'project'
 
 def test(request):
