@@ -1,7 +1,8 @@
-from django.contrib import admin
 from django.urls import path
-from .views import CustomLoginView
+from .views import CustomLoginView, CustomRegistrationView
 
 urlpatterns = [
-    path('login', CustomLoginView.as_view(), name='login-form')
+    path('login/', CustomLoginView.as_view(), name='login-form'),
+    path('register/', CustomRegistrationView.as_view(), name='register')
+    
 ]
