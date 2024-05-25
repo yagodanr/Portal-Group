@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<h2>{{ project.name }}</h2>
+<a href="{% url 'detail-gallery-project' user.id %}">
+    <img src="{{ project.gallery.last.image.url }}" alt="Зоображення">
+</a>
+{% for author in project.authors.all %}
+<a href="{% url 'detail-portfolio' author.id %}">{{ author.username }}</a>
+{% endfor %}
+<p>{{ project.description }}</p>
+<a href="{{ project.link }}">github</a>
+
+
+{% endblock %}

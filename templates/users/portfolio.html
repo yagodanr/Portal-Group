@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<h2>{{ user.username }}</h2>
+<a href="{% url 'detail-gallery-portfolio' user.id %}">
+    <img src="{{ user.portfolio.first.gallery.last.image.url }}" alt="Зоображення з коментаря">
+</a>
+<p>{{ user.portfolio.first.description }}</p>
+{% for project in user.projects.all %}
+    <a href="{% url 'detail-project' project.id %}">{{ project.name }}</a>
+{% endfor %}
+
+{% endblock %}
