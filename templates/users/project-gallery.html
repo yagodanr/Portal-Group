@@ -1,0 +1,10 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+{% for image in project.gallery.all  %}
+    <img src="{{ image.image.url }}" alt="Зоображення">
+{% endfor %}
+<a href="{% url 'detail-project' project.id %}">Back</a>
+
+{% endblock %}
