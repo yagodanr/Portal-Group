@@ -1,43 +1,40 @@
 from typing import Any
 from django.shortcuts import render
-from django.contrib.auth.models import User
-from django.views.generic import DetailView, ListView
-from .models import Project, GalleryImage
+from django.views.generic import DetailView
+from .models import Project, GalleryImage, Portfolio
 
+from auth_sys.models import MyUser
 # Create your views here.
 
 
-class UserDetailView(DetailView):
-    model = User
-    template_name = 'users/portfolio.html'
-    context_object_name = 'user'
 
 
-class UserListView(ListView):
-    model = User
-    template_name = 'users/users-list.html'
-    context_object_name = 'users'
 
+class PortfolioDetailView(DetailView):
+    model = Portfolio
+    template_name = 'students/portfolio.html'
+    context_object_name = 'portfolio'
+    
 
 class ProjectDetailView(DetailView):
     model = Project
-    template_name = 'users/project.html'
+    template_name = 'students/project.html'
     context_object_name = 'project'
 
 
 class GalleryPortfolioListView(DetailView):
-    model = User
-    template_name = 'users/portfolio-gallery.html'
-    context_object_name = 'user'
+    model = Portfolio
+    template_name = 'students/portfolio-gallery.html'
+    context_object_name = 'portfolio'
 
 
 class GalleryProjectListView(DetailView):
     model = Project
-    template_name = 'users/project-gallery.html'
+    template_name = 'students/project-gallery.html'
     context_object_name = 'project'
 
 
 def test(request):
-    a = User.objects.get(id=1)
+    a = MyUser.objects.get(id=1)
     b = a.portfolio.first().gallery.last().image.url
     print(b)
