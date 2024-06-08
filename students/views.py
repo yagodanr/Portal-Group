@@ -1,13 +1,19 @@
-from typing import Any
-from django.shortcuts import render
-from django.views.generic import DetailView
-from .models import Project, GalleryImage, Portfolio
+from django.views.generic import DetailView, ListView
+from .models import Project, Portfolio
 
 from auth_sys.models import MyUser
 # Create your views here.
 
 
+class PortfolioListView(ListView):
+    model = Portfolio
+    template_name = "students/portfolio-list.html"
+    context_object_name = 'portfolios'
 
+class ProjectListView(ListView):
+    model = Project
+    template_name = "students/project-list.html"
+    context_object_name = 'projects'
 
 
 class PortfolioDetailView(DetailView):
