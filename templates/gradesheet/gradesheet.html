@@ -2,7 +2,7 @@
 
 {% block content %}
 
-<div class="container">
+<div class="container mt-3">
   <p class="d-inline-flex gap-1">
     {% for subj in subjects %}
       <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ subj.name }}" aria-expanded="false" aria-controls="collapse{{ subj.name }}">
@@ -13,7 +13,7 @@
   </p>
   
   {% for subj in subjects %}
-    <div class="collapse multi-collapse" id="collapse{{ subj.name }}">
+    <div class="collapse multi-collapse mt-3" id="collapse{{ subj.name }}">
       <div class="card card-body">
         
         <h1 class="fs-3">{{ subj.name }}</h1>
