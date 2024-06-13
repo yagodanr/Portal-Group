@@ -25,6 +25,7 @@ class PollDetailView(DetailView):
             percentages.append(int(o.voted.all().count()* 100 / total_voted)) 
 
         context["options"] = zip(context["poll"].options.all(), percentages)
+        context["total_voted"] = total_voted
         
         return context
 

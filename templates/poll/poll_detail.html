@@ -4,7 +4,8 @@
 
 {% block content %}
 <div class="container">
-  <h1 class="display-2">{{ poll.title }}</h1>
+  <h1 class="display-2 text-bold">{{ poll.title }}</h1>
+  <h2 class="fs-4">Voted: {{ total_voted }}</h2>
 
   
   <form method="POST" class="d-flex flex-column">
