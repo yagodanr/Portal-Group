@@ -1,0 +1,18 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+
+<div class="container">
+  
+  {% for p in polls %}
+    <a href="{% url 'detail-poll' p.id %}" class="link link-primary fs-3">{{ p.title }}</a>
+    <hr>
+  {% endfor %}
+    
+
+
+</div>
+
+{% endblock content %}
+    
