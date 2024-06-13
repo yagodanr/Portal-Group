@@ -11,9 +11,13 @@
   <form method="POST" class="d-flex flex-column">
     {% csrf_token %}
     {% for o, percentage in options %}
-      <button name="option", value="{{ o.id }}" type="submit" class="progress mb-3 btn btn-info flex-fill" role="progressbar" aria-label="Animated striped example" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" style="height: 4rem">
-        <div class="progress-bar bg-success rounded" style="width: {{ percentage }}%">{{ percentage }}</div>
-      </button>
+      {% if percentage == 0 %}
+        <button type="submit" name="option" value="{{ o.id }}" class="btn btn-info flex-fill">{{ o.name }}</button>
+      {% else %}
+        <button type="submit" name="option", value="{{ o.id }}" class="progress mb-3 btn btn-info flex-fill" role="progressbar" aria-label="Animated striped example" aria-valuenow="{{ percentage }}" aria-valuemin="0" aria-valuemax="100" style="height: 4rem">
+          <div class="progress-bar bg-success rounded" style="width: {{ percentage }}%">{{ o.name }} : {{ percentage }}</div>
+        </button>
+      {% endif %}
 
     {% endfor %}
   </form>

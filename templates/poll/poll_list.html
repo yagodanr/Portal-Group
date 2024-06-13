@@ -5,9 +5,12 @@
 
 <div class="container">
   
+  <a href="{% url 'create-poll' %}" class="btn btn-primary btn-lg">CREATE NEW POLL</a>
+  <hr>
+
   {% for p in polls %}
     <a href="{% url 'detail-poll' p.id %}" class="link link-primary fs-3">{{ p.title }}</a>
-    <hr>
+    <br>
   {% endfor %}
     
 

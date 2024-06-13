@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<div class="container">
+  <h1 class="display-2">New Poll</h1>
+  <form method="POST">
+    {% csrf_token %}
+    <label for="title" class="form-label fs-2">Title </label>
+    <input type="text" name="title" class="form-control" placeholder="Title" aria-label="title" id="title">
+    
+    <hr>
+
+    <h2 class="fs-2">Options: </h2>
+    
+    {% for i in range %}
+      <input type="text" name="{{ i }}" class="form-control mb-3" placeholder="Option" id="{{ i }}">
+    {% endfor %}
+    
+    <button type="submit" class="btn btn-primary btn-lg">Submit</button>
+  </form>
+</div>
+{% endblock content %}
+    
