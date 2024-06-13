@@ -42,6 +42,8 @@ INSTALLED_APPS = [
     "forum",
     "gradesheet",
     'students',
+    "poll",
+    
 ]
 
 MIDDLEWARE = [
