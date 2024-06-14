@@ -21,7 +21,7 @@ class CustomRegistrationView(CreateView):
     model = MyUser
     form_class = MyUserCreationForm
     template_name="auth_sys/register.html"
-    success_url = reverse_lazy('login-form')
+    success_url = reverse_lazy('login')
     
     
 
