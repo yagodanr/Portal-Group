@@ -2,7 +2,7 @@
 {% block content %}
 
 {% for user in users %}
-    <a href="{% url 'detail-portfolio' user.id %}">{{ user.username }}</a>
+    <a href="{% url 'detail-portfolio' user.portfolio.first.id %}">{{ user.username }}</a>
 {% endfor %}
 
 

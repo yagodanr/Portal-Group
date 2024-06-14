@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+{% load tags %}
+
+
+<div class="container mt-3">
+  <form method="GET">
+    {{ form.as_p }}
+    <button type="submit" class="btn btn-lg btn-primary">Filter</button>
+  </form>
+  <hr/>
+  
+  <p class="fs-4">Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}</p>
+	<nav aria-label="pagination_arrows">
+		<ul class="pagination">
+			<li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+				<a href="{% filter_and_paginate 'page' 1 request.GET.urlencode %}" class="page-link">&laquo;</a>
+			</li>
+			<li class="page-item {% if not page_obj.has_previous %}disabled{% endif %}">
+				<a href="{% if page_obj.has_previous %}{% filter_and_paginate 'page' page_obj.previous_page_number request.GET.urlencode %}{% else %}#{% endif %}" class="page-link">&lsaquo;</a>
+			</li>
+			<li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+				<a href="{% if page_obj.has_next %}{% filter_and_paginate 'page' page_obj.next_page_number request.GET.urlencode %}{% else %}#{% endif %}" class="page-link">&rsaquo;</a>
+			</li>
+			<li class="page-item {% if not page_obj.has_next %}disabled{% endif %}">
+				<a href="{% filter_and_paginate 'page' page_obj.paginator.num_pages request.GET.urlencode %}" class="page-link">&raquo;</a>
+			</li>
+		</ul>
+	</nav>
+
+  <div class="card card-body">
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">Student</th>
+            <th scope="col">Subject</th>
+            <th scope="col">Grade</th>
+            <th scope="col">Project Name</th>
+            <th scope="col">Date</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        {% for grade in grades %}
+            <tr>
+            <th scope="row">{{ grade.student }}</th>
+            <td>{{ grade.subject }}</td>
+            <td>{{ grade.grade }}</td>
+            <td>{{ grade.project.name }}</td>
+            <td>{{ grade.date }}</td>
+            </tr>
+            
+        {% endfor %}
+        </tbody>
+    </table>
+
+
+
+  </div>
+    
+    
+  
+
+
+</div>
+
+
+{% endblock content %}
+    

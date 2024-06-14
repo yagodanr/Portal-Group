@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="container mt-3">
+  <p class="d-inline-flex gap-1">
+    {% for subj in subjects %}
+      <button class="btn btn-primary btn-lg" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ subj.name }}" aria-expanded="false" aria-controls="collapse{{ subj.name }}">
+        {{ subj.name }}
+      </button>
+      
+    {% endfor %}
+  </p>
+  
+  {% for subj in subjects %}
+    <div class="collapse multi-collapse mt-3" id="collapse{{ subj.name }}">
+      <div class="card card-body">
+        
+        <h1 class="fs-3">{{ subj.name }}</h1>
+        <h2 class="fs-5">{{ subj.teacher }}</h2>
+
+        <table class="table">
+          <thead>
+            <tr>
+              <th scope="col">Student</th>
+              <th scope="col">Grade</th>
+              <th scope="col">Date</th>
+            </tr>
+          </thead>
+
+          <tbody>
+            {% for grade in subj.grades.all %}
+              <tr>
+                <th scope="row">{{ grade.student }}</th>
+                <td>{{ grade.grade }}</td>
+                <td>{{ grade.date }}</td>
+              </tr>
+              
+            {% endfor %}
+          </tbody>
+        </table>
+
+
+
+      </div>
+    </div>
+    
+  {% endfor %}
+    
+  
+
+
+</div>
+
+
+{% endblock content %}
+    
