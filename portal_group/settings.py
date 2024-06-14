@@ -38,9 +38,12 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'auth_sys',
+    "django_filters",
     "forum",
     "gradesheet",
     'students',
+    "poll",
+    
 ]
 
 MIDDLEWARE = [

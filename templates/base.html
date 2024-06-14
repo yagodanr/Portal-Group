@@ -11,8 +11,15 @@
 
 </head>
 <body>
-    <h1>Project Logika</h1>
+    
+    {% block header %}
+        {% include 'header.html' %}
+    {% endblock header %}
+        
+
+
     {% block content %}
+        <h1 class="display-2 text-center text-bold">Wellcome to our main page</h1>
     {% endblock %}
 
 

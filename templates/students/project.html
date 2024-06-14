@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-7">
+            <h2>{{ project.name }}</h2>
+            {% for author in project.authors.all %}
+                <div style="float: left; display: flow; border:none" class="m-2 ms-0 me-4 card">
+                    <img style="width:40px; height:40px; border-radius: 50%" src="{{ author.portfolio.first.gallery.last.image.url }}">
+                    <a href="{% url 'detail-portfolio' author.id %}" style="text-decoration: none;" class="stretched-link dt">{{ author.username }}</a>
+                </div>
+            {% endfor %}
+            <a href="{% url 'detail-gallery-project' user.id %}">
+                <img style="width:710px; height:425px" src="{{ project.gallery.last.image.url }}" alt="Зоображення">
+            </a>
+        </div>
+        <div style="border-left: 2px solid #c7c8c9;" class="col">
+            <p>{{ project.description }}</p>
+            <a href="{{ project.link }}">github</a>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
