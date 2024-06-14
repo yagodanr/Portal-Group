@@ -3,15 +3,18 @@ from django.http import HttpRequest, HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic import ListView, DetailView, CreateView
 
+from django.contrib.auth.mixins import LoginRequiredMixin
+
 from .models import Poll, Option
 
 
 # Create your views here.
 class PollListView(ListView):
     model = Poll
-    context_object_name = 'polls'
+    context_object_name = 'polls'   
 
-class PollDetailView(DetailView):
+
+class PollDetailView(LoginRequiredMixin, DetailView):
     model = Poll
     
     def get_context_data(self, **kwargs: Any) -> dict[str, Any]:    
