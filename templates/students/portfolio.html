@@ -1,13 +1,40 @@
 {% extends 'base.html' %}
 {% block content %}
 
-<h2>{{ portfolio.user.username }}</h2>
-<a href="{% url 'detail-gallery-portfolio' portfolio.user.id %}">
-    <img src="{{ portfolio.gallery.last.image.url }}" alt="Зоображення з коментаря">
-</a>
-<p>{{ portfolio.description }}</p>
-{% for project in portfolio.user.projects.all %}
-    <a href="{% url 'detail-project' project.id %}">{{ project.name }}</a>
-{% endfor %}
+<div class="container">
+    <div style="display: flex;">
+        <a style="size: none;" href="{% url 'detail-gallery-portfolio' portfolio.user.id %}" class="me-3">
+            <img src="{{ portfolio.gallery.last.image.url }}" class="portfolio-image" alt="Зоображення з коментаря">
+        </a>
+        <div style="display: block;" class="ms-1">
+            <p style="font-size: 4rem; ">{{ portfolio.user.username }}</p>
+            <p>{{ portfolio.description }}</p>
+        </div>
+        <a href="#" style="margin:3% 0 auto auto" class="btn btn-secondary">Edit</a>
+    </div>
+    <hr>
+    <div class="row">
+        <div style="border-right: 2px solid #c7c8c9;" class="col-2">
+            <p>Class</p>
+            <hr>
+            <a href="{% url 'gradesheet' %}?{{ portfolio.user.username }}">Grades</a>
+        </div>
+        <div class="col row g-4 g-xl-7 demo-grid m-0">
+            {% for project in portfolio.user.projects.all %}
+                <div class="col-sm-6 col-lg-4 demo-grid-item">
+                    <div class="card border border-top p-3">
+                        <a href="{% url 'detail-project' project.id %}" class="stretched-link">{{ project.name }}</a>
+                        <div class="container-fluid p-0">
+                            {% for author in project.authors.all %}
+                                <small>{{ author.username }}</small>
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+    </div>
+</div>
 
 {% endblock %}
