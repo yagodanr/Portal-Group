@@ -1,10 +1,12 @@
 {% extends 'base.html' %}
 {% block content %}
 
-
-{% for image in portfolio.gallery.all  %}
-    <img src="{{ image.image.url }}" alt="Зоображення">
-{% endfor %}
-<a href="{% url 'detail-portfolio' user.id %}">Back</a>
+<div class="container mt-2">
+    <h1 style="text-align: center">{{ portfolio.user.username }} gallery</h1>
+    {% for image in portfolio.gallery.all  %}
+        <img style="min-width:250px; min-height:250px; max-width:320px; max-height:320px" src="{{ image.image.url }}" alt="Зоображення">
+    {% endfor %}
+    <a href="{% url 'detail-portfolio' user.id %}" style="margin:auto; display:table" class="btn btn-secondary ps-5 pe-5 mt-2">Back</a>
+</div>
 
 {% endblock %}
