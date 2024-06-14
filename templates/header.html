@@ -20,5 +20,22 @@
           </li>
         </ul>
       </div>
+
+      {% if user.is_authenticated %}
+      <div class="mb-auto">
+        <form method="POST" action="{% url 'logout' %}">
+          {% csrf_token %}
+          <button type="submit" class="btn btn-lg btn-danger">Logout</button>
+        </form>
+      </div>
+
+
+      {% else %}
+      <div class="mb-auto">
+        <a href="{% url 'login' %}" class="btn btn-lg btn-primary">Login</a>
+      </div>
+
+      {% endif %}
+
     </div>
   </nav>
