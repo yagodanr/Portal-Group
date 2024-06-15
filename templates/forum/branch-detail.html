@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+{% for post in branch.post.all %}
+    <div class="card">
+        <div style="float: left; display: flow; border:none" class="m-2 ms-0 me-4 card">
+            <img style="width:40px; height:40px; border-radius: 50%" src="{{ author.portfolio.first.gallery.last.image.url }}">
+            <a href="{% url 'detail-portfolio' post.author.id %}" style="text-decoration: none;" class="stretched-link dt">{{ post.author.username }}</a>
+        </div>
+        <h2>{{post.name}}</h2>
+    </div>
+{% endfor %}
+
+{% endblock content %}
+    
+

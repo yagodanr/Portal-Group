@@ -25,6 +25,7 @@ urlpatterns = [
     path('', TemplateView.as_view(template_name="base.html")),
     path('', include('auth_sys.urls')),
     path('', include('students.urls')),
+    path('forum/', include('forum.urls')),
     path('gradesheet/', include('gradesheet.urls')),
     path('poll/', include('poll.urls')),
 ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
