@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div style="text-align: center;" class="container">
+    <h2>Create branch</h2>
+    <form method="POST">
+        {% csrf_token %}
+        <input type="text" name="name" class="form-control mb-2" placeholder="Name" id="name">
+        <input type="text" name="text" class="form-control mb-2" placeholder="Text" id="text">
+        <button type="submit" class="btn btn-primary btn">Submit</button>
+    </form>
+</div>
+
+{% endblock content %}
+    
+

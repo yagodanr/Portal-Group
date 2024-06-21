@@ -3,6 +3,7 @@
 
 <div style="text-align: center;" class="container">
     <h2>Branches</h2>
+    <h2><a href="{% url 'branch-create' %}">Create branch</a></h2>
     {% for branch in branches %}
         <h2><a href="{% url 'branch-detail' branch.id %}">{{branch.name}} {{ branch.post.all|length }} post</a></h2>
     {% endfor %}
