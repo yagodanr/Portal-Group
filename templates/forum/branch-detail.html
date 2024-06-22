@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+{% block content %}
+
+<div class="container mt-2">
+    <h2>Branch {{branch.name}}</h2>
+    <a class="btn btn-secondary" href="{% url 'branch-list' %}">Back</a>
+    <h2>Posts {{branch.post.all|length}}</h2>
+    <h2><a href="{% url 'post-create' branch.pk %}">Create post</a></h2>
+    {% for post in branch.post.all %}
+        <div style="display: grid;" class="m-2">
+            <div style="float: left; display: flow; border:none" class="m-2 ms-0 me-4 card">
+                <img style="width:40px; height:40px; border-radius: 50%" src="{{ author.portfolio.first.gallery.last.image.url }}">
+                <a href="{% url 'detail-portfolio' post.author.id %}" style="text-decoration: none;" class="stretched-link dt">{{ post.author.username }}</a>
+            </div>
+            <h4>{{post.name}}</h4>
+            <p>{{post.text}}</p>
+        </div>
+    {% endfor %}
+</div>
+
+{% endblock content %}
+    
+
